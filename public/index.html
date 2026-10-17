@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#100b24" />
+  <meta name="color-scheme" content="dark" />
+
+  <title>Movie Night — Our Little Universe ✦</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grain"></div>
+  <div class="starfield" aria-hidden="true"></div>
+
+  <!-- LANDING -->
+  <main id="landing" class="landing">
+    <header class="landing-nav">
+      <a class="brand" href="/">
+        <span class="brand-icon">✦</span>
+        <span class="brand-name">movie<span class="brand-highlight">night.</span></span>
+      </a>
+
+      <div class="private-chip">
+        <span class="online-dot"></span>
+        Just us, tonight
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span></span>
+          ONE ROOM · TWO HEARTS · INFINITE NIGHTS
+        </div>
+
+        <h1>
+          A little closer,
+          <span>even from afar.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Your private corner of the universe. Pick a movie, share a screen, and make every mile between you disappear.
+        </p>
+
+        <div class="hero-actions">
+          <button id="createRoomBtn" class="btn btn-primary">
+            <span>Create our space</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <div class="join-box">
+            <input
+              id="joinCode"
+              autocomplete="off"
+              maxlength="40"
+              spellcheck="false"
+              placeholder="Paste an invite code"
+            />
+            <button id="joinRoomBtn" class="btn btn-secondary">Join</button>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <span>Shared cinema</span>
+          <i></i>
+          <span>Just-us chat</span>
+          <i></i>
+          <span>Face-to-face calls</span>
+        </div>
+
+        <p class="privacy-note">
+          Private by design · Your streaming credentials stay with their provider.
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="visual-glow"></div>
+
+        <div class="screen-card">
+          <div class="screen-card-top">
+            <div class="screen-card-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span>THE NIGHT IS OURS</span>
+          </div>
+
+          <div class="screen-card-body">
+            <div class="screen-logo">✦</div>
+            <div class="screen-heart">♥</div>
+            <p>Every night feels closer with you.</p>
+          </div>
+
+          <div class="screen-card-footer">
+            <span><b></b> Made for two</span>
+            <span>Movie Night ♥</span>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card-a">
+          <span class="mini-avatar">Y</span>
+          <div>
+            <strong>You</strong>
+            <small>Ready</small>
+          </div>
+        </div>
+
+        <div class="floating-card floating-card-b">
+          <span class="mini-avatar pink">♥</span>
+          <div>
+            <strong>Favorite person</strong>
+            <small>Connected</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="landing-footer">
+      <span>Different places. Same little universe.</span>
+      <span>♥</span>
+    </footer>
+  </main>
+
+  <!-- ROOM -->
+  <main id="roomApp" class="app-shell hidden">
+    <header class="topbar">
+      <div class="brand compact">
+        <span class="brand-icon">✦</span>
+        <div>
+          <span class="brand-name">movie<span class="brand-highlight">night.</span></span>
+          <small id="roomLabel">Private room</small>
+        </div>
+      </div>
+
+      <div class="room-state">
+        <span class="online-dot"></span>
+        <span id="presenceText">1 connected</span>
+      </div>
+
+      <div class="top-actions">
+        <button id="copyInviteBtn" class="ghost-btn" title="Copy invite">
+          Invite
+        </button>
+        <button id="leaveBtn" class="ghost-btn danger-text" title="Leave room">
+          Leave
+        </button>
+      </div>
+    </header>
+
+    <section class="watch-layout">
+      <div class="viewer-column">
+        <section class="viewer-panel">
+          <div class="viewer-toolbar">
+            <div>
+              <span class="mini-label">OUR PRIVATE CINEMA</span>
+              <h2>The big screen</h2>
+            </div>
+
+            <div class="sync-pill">
+              <span class="online-dot"></span>
+              Together in real time
+            </div>
+          </div>
+
+          <div class="viewer">
+            <div id="browserContainer" class="browser-container">
+              <div id="browserEmpty" class="empty-browser">
+                <div class="netflix-badge">✦</div>
+
+                <span class="mini-label">YOUR SHARED BROWSER</span>
+                <h2>Our screen awaits.</h2>
+
+                <p>
+                  Start your shared browser, pick something to watch, and enjoy the moment together.
+                </p>
+
+                <button id="startBrowserBtn" class="btn btn-primary start-btn">
+                  <span>▶</span>
+                  Start movie night
+                </button>
+
+                <p id="browserStatus" class="status-text"></p>
+              </div>
+            </div>
+
+            <div id="reactionLayer" class="reaction-layer"></div>
+          </div>
+        </section>
+
+        <section class="controls-panel">
+          <div class="reaction-area">
+            <span class="control-label">React</span>
+
+            <div class="reaction-buttons" aria-label="Reactions">
+              <button data-emoji="❤️">❤️</button>
+              <button data-emoji="😂">😂</button>
+              <button data-emoji="😮">😮</button>
+              <button data-emoji="🥺">🥺</button>
+              <button data-emoji="🔥">🔥</button>
+              <button data-emoji="😘">😘</button>
+            </div>
+          </div>
+
+          <div class="call-controls">
+            <button id="callBtn" class="control-btn accent-control">
+              🎙 Start call
+            </button>
+            <button id="muteBtn" class="control-btn hidden">Mic on</button>
+            <button id="cameraBtn" class="control-btn hidden">Camera off</button>
+            <button id="hangupBtn" class="control-btn danger hidden">Hang up</button>
+          </div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="sidebar-section people-section">
+          <div class="section-title">
+            <div>
+              <span class="mini-label">OUR LITTLE SPACE</span>
+              <h3>The two of us</h3>
+            </div>
+            <span id="memberCountBadge" class="count-badge">1</span>
+          </div>
+
+          <div id="membersList" class="members-list"></div>
+        </section>
+
+        <section id="callPanel" class="sidebar-section call-panel hidden">
+          <div class="section-title">
+            <div>
+              <span class="mini-label">LIVE</span>
+              <h3>Face to face</h3>
+            </div>
+
+            <span class="live-badge">
+              <i></i>
+              LIVE
+            </span>
+          </div>
+
+          <div class="video-grid">
+            <div class="video-card">
+              <video id="remoteVideo" autoplay playsinline></video>
+              <span>Partner</span>
+            </div>
+
+            <div class="video-card small-video">
+              <video id="localVideo" autoplay playsinline muted></video>
+              <span>You</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-section chat-section">
+          <div class="section-title">
+            <div>
+              <span class="mini-label">PRIVATE</span>
+              <h3>Chat</h3>
+            </div>
+
+            <span class="chat-heart">♥</span>
+          </div>
+
+          <div id="chatMessages" class="chat-messages">
+            <div class="system-msg">♥ Your little conversation starts here.</div>
+          </div>
+
+          <form id="chatForm" class="chat-form">
+            <input
+              id="chatInput"
+              autocomplete="off"
+              maxlength="500"
+              placeholder="Say something sweet..."
+            />
+            <button class="send-btn" aria-label="Send">↑</button>
+          </form>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <!-- NAME MODAL -->
+  <div id="nameModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-icon">♥</div>
+      <span class="mini-label">THE NIGHT IS OURS</span>
+      <h2>What should we call you?</h2>
+
+      <p>Just a name for your private movie night.</p>
+
+      <form id="nameForm">
+        <input
+          id="displayName"
+          maxlength="24"
+          autocomplete="name"
+          placeholder="Your name"
+          required
+        />
+
+        <button class="btn btn-primary" type="submit">
+          Enter room
+          <span>→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
